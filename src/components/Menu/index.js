@@ -26,7 +26,7 @@ const StyledMenu = styled.header`
   }
 `;
 
-export default function Menu(valorDoFilter, setValorDoFilter) {
+export default function Menu({valorDoFilter, setValorDoFilter}) {
   return (
     <StyledMenu>
       <div>

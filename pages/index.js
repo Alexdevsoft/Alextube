@@ -10,9 +10,10 @@ function HomePage(){
 
   }
 
-  const [valorDoFilter, setValorDoFilter] = React.useState("");
-    return (
-        <>
+  const [valorDoFilter, setValorDoFilter] = React.useState("")
+  return (
+      <div>
+        
             <CSSReset />
             <div style={{
                 display: "flex",
@@ -20,15 +21,15 @@ function HomePage(){
                 flex: 1
                 
             }}>
-                <Menu valorDoFilter={valorDoFilter} setValorDoFilter={setValorDoFilter}/>
+                <Menu valorDoFilter={valorDoFilter} setValorDoFilter={setValorDoFilter} />
                 <Header />
                 
                 <Timeline searchValue={valorDoFilter} playlists={config.playlists}>
                   
                 </Timeline>
             </div>
-        </>
-    )
+        </div>
+    );
 }
 export default HomePage
 
@@ -40,7 +41,8 @@ const StyledHeader = styled.div`
   }
 
   .user-info {
-    background-image: url(${config.bg});
+    //background-image: url(${config.bg});
+    margin-top: 50px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -51,13 +53,13 @@ const StyledHeader = styled.div`
 
 const StyledBanner = styled.div`
   background-image: blue;
-  background-image: url(${({ bg })} => bg)};
-  hight: 230px
+  background-image: url(${({ bg }) => bg});
+  height: 230px;
 `;
 function Header() {
   return (
-    <StylecHeader>
-    <StyledBanner bg={bg} />
+    <StyledHeader>
+    <StyledBanner bg={config.bg} />
       {/*<img src="banner" />*/}
       <section className="user-info">
         <img src={`https://github.com/${config.github}.png`} />
@@ -67,27 +69,27 @@ function Header() {
           <p>{config.job}</p>
         </div>
       </section>
-    </StylecHeader>
+    </StyledHeader>
   );
 }
 
 function Timeline({searchValue, ...propriedades}) {
-  //console.log("Dentro do componente", propriedades.playlists);
+  console.log(searchValue);
   const playlistNames = Object.keys(propriedades.playlists);
   return (
     
     <StyledTimeline>
       {playlistNames.map((playlistNames) => {
         const videos = propriedades.playlists[playlistNames];
-        console.log(playlistNames);
-        console.log(videos);
+        //console.log(playlistNames);
+        //console.log(videos);
         return (
           <section key={playlistNames}>
             <h2>{playlistNames}</h2>
             <div>
               {videos.filter((video) => {
                 const titleNormalized = video.title.toLowerCase();
-                const searchValueNormalized = video.title.toLowerCase();
+                const searchValueNormalized = searchValue.toLowerCase();
                 return titleNormalized.includes(searchValueNormalized)
               }).map((video) => {
                 return (
@@ -102,8 +104,8 @@ function Timeline({searchValue, ...propriedades}) {
         );
       })}
     
-    <StyledTimeline />
+    </StyledTimeline>
     
-  );
+  ); 
 }
 
