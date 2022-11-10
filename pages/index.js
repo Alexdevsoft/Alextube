@@ -1,9 +1,9 @@
 import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
-import { CSSReset } from "../src/componets/CSSReset";
-import Menu from "../src/componets/Menu";
-import { StyledTimeline } from "../src/componets/Timeline";
+import { CSSReset } from "../src/components/CSSReset";
+import Menu from "../src/components/Menu";
+import { StyledTimeline } from "../src/components/Timeline";
 
 function HomePage(){
   const estilosDaHomePage = {
@@ -24,21 +24,15 @@ function HomePage(){
                 <Header />
                 
                 <Timeline searchValue={valorDoFilter} playlists={config.playlists}>
-                  Conteudo
+                  
                 </Timeline>
             </div>
         </>
-    );
+    )
 }
 export default HomePage
 
-//function Menu(){
-//    return (
-//        <div>Menu</div>
-//    )
-//}
-
-const StylecHeader = styled.div`
+const StyledHeader = styled.div`
   img {
     width: 80px;
     height: 80px;
