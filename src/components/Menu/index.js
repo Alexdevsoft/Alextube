@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import DarkModeSwitch from "./components/DarkModeSwitch";
 import Search from "./components/Search";
 
 
@@ -33,6 +34,7 @@ export default function Menu({valorDoFilter, setValorDoFilter}) {
         <Logo />
       </div>
         <Search valorDoFilter={valorDoFilter} setValorDoFilter={setValorDoFilter}/>
+        <DarkModeSwitch />
     </StyledMenu>
   );
 }
